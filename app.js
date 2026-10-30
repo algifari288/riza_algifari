@@ -186,3 +186,4 @@ const intro=document.getElementById('intro'),site=document.getElementById('site'
 
   document.getElementById("gameJump").addEventListener("click", jump);
 })();
+})();
