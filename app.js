@@ -106,5 +106,85 @@ const intro=document.getElementById('intro'),site=document.getElementById('site'
     ['pointerup','pointercancel','lostpointercapture'].forEach(ev=>btn.addEventListener(ev,e=>{e.preventDefault();press(dir,false);}));
   });
   window.addEventListener('blur',()=>{held.left=false;held.right=false;});
+  // PLAYER ADVENTURE GAME
+(() => {
+  const player = document.getElementById("gamePlayer");
+  const world = document.getElementById("gameWorld");
+  const status = document.getElementById("gameStatus");
+
+  if (!player || !world) return;
+
+  let position = 20;
+  let moving = false;
+  let jumping = false;
+
+  function move(direction) {
+    const max = world.clientWidth - player.offsetWidth;
+
+    position += direction * 12;
+    position = Math.max(0, Math.min(position, max));
+
+    player.style.left = position + "px";
+    player.src = "berjalan.gif";
+    status.textContent = "SEDANG BERJALAN";
+
+    moving = true;
+  }
+
+  function stop() {
+    if (jumping) return;
+
+    player.src = "diam.gif";
+    status.textContent = "SIAP BERMAIN";
+    moving = false;
+  }
+
+  function jump() {
+    if (jumping) return;
+
+    jumping = true;
+    player.src = "lompat.gif";
+    player.classList.add("jumping");
+    status.textContent = "MELONCAT!";
+
+    setTimeout(() => {
+      player.classList.remove("jumping");
+      jumping = false;
+
+      if (!moving) {
+        player.src = "diam.gif";
+        status.textContent = "SIAP BERMAIN";
+      }
+    }, 550);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (["ArrowLeft", "ArrowRight", " "].includes(e.key)) {
+      e.preventDefault();
+    }
+
+    if (e.key === "ArrowRight") move(1);
+    if (e.key === "ArrowLeft") move(-1);
+    if (e.key === " ") jump();
+  });
+
+  document.addEventListener("keyup", (e) => {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      stop();
+    }
+  });
+
+  document.getElementById("gameLeft").addEventListener("click", () => {
+    move(-1);
+    setTimeout(stop, 150);
+  });
+
+  document.getElementById("gameRight").addEventListener("click", () => {
+    move(1);
+    setTimeout(stop, 150);
+  });
+
+  document.getElementById("gameJump").addEventListener("click", jump);
+})();
   reset();
 })();
