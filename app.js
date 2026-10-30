@@ -106,7 +106,7 @@ const intro=document.getElementById('intro'),site=document.getElementById('site'
     ['pointerup','pointercancel','lostpointercapture'].forEach(ev=>btn.addEventListener(ev,e=>{e.preventDefault();press(dir,false);}));
   });
   window.addEventListener('blur',()=>{held.left=false;held.right=false;});
-  // PLAYER ADVENTURE GAME
+// PLAYER ADVENTURE GAME
 (() => {
   const player = document.getElementById("gamePlayer");
   const world = document.getElementById("gameWorld");
@@ -185,6 +185,4 @@ const intro=document.getElementById('intro'),site=document.getElementById('site'
   });
 
   document.getElementById("gameJump").addEventListener("click", jump);
-})();
-  reset();
 })();
