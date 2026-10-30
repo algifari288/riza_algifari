@@ -28,3 +28,30 @@
     min-height: 230px !important;
   }
 }
+
+
+/* PIXEL ADVENTURE GAME */
+.arcade{max-width:900px;margin:0 auto;background:var(--panel);border:3px solid var(--navy);box-shadow:6px 6px #c4c8b8;padding:14px}
+.arcade-top,.arcade-hud{display:flex;align-items:center;justify-content:space-between;gap:12px;font:8px 'Press Start 2P';padding:8px 4px 13px;color:var(--navy)}
+.arcade-top span:last-child{color:var(--grass)}
+.game-world{height:330px;position:relative;overflow:hidden;border:3px solid var(--navy);background:linear-gradient(#9bdcf5 0 66%,#b9df9b 66% 100%);touch-action:pan-y}
+.game-sun{position:absolute;right:12%;top:28px;width:38px;height:38px;background:#ffd45b;box-shadow:0 0 0 7px #ffd45b55}
+.game-cloud{position:absolute;top:60px;width:58px;height:13px;background:#fff;box-shadow:15px -10px #fff,30px 0 #fff}
+.game-cloud-one{left:15%}.game-cloud-two{right:32%;top:105px;transform:scale(.8)}
+.game-platform{position:absolute;bottom:0;left:0;width:100%;height:44px;background:repeating-linear-gradient(90deg,#81532e 0 28px,#704526 28px 30px);border-top:10px solid #469b48}
+.game-player{position:absolute;z-index:4;left:55px;bottom:38px;width:92px;height:auto;max-height:170px;object-fit:contain;image-rendering:pixelated;pointer-events:none;user-select:none}
+.game-obstacle{position:absolute;z-index:3;bottom:38px;width:34px;height:40px;background:#9b673c;border:3px solid #26334c;box-shadow:inset 0 7px #b98751}
+.obstacle-one{left:38%}.obstacle-two{left:64%;height:54px}.obstacle-three{left:88%;height:34px}
+.game-star{position:absolute;z-index:2;color:#ffc23c;font-size:27px;text-shadow:2px 2px #8a6322;animation:star-float 1s ease-in-out infinite alternate}
+.star-one{left:51%;top:43%}.star-two{left:77%;top:32%;animation-delay:.4s}
+@keyframes star-float{to{transform:translateY(-9px)}}
+.game-overlay{position:absolute;z-index:8;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;background:#172b50c9;color:white;text-align:center;padding:18px}
+.game-overlay b{font:clamp(12px,2vw,17px) 'Press Start 2P';line-height:1.8}.game-overlay span{font-size:16px}
+.game-overlay button,.arcade-hud button,.game-control{border:3px solid var(--navy);background:var(--yellow);color:var(--navy);box-shadow:3px 3px var(--navy);padding:10px 14px;font:9px 'Press Start 2P'}
+.game-overlay.hidden{display:none}
+.arcade-hud{padding:14px 4px 4px}.arcade-hud b{color:var(--grass)}.arcade-hud button{font-size:7px;padding:8px}
+.game-controls{display:flex;justify-content:center;gap:12px;padding:18px 0 8px}
+.game-control{min-width:62px;min-height:48px;touch-action:none;user-select:none;-webkit-user-select:none}
+.jump-control{min-width:118px;background:#a9d9ef}
+.game-help{text-align:center;color:var(--muted);font-size:13px;line-height:1.5;margin:12px 0 2px}
+@media(max-width:680px){.arcade{padding:9px}.game-world{height:260px}.game-player{width:72px;left:28px;max-height:135px}.game-obstacle{width:28px;height:34px}.obstacle-two{height:45px}.arcade-top,.arcade-hud{font-size:6px}.game-controls{gap:9px}.game-control{min-width:54px;min-height:52px;padding:8px;font-size:8px}.jump-control{min-width:104px}.game-help{font-size:12px}}
