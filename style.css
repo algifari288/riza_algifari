@@ -55,3 +55,103 @@
 .jump-control{min-width:118px;background:#a9d9ef}
 .game-help{text-align:center;color:var(--muted);font-size:13px;line-height:1.5;margin:12px 0 2px}
 @media(max-width:680px){.arcade{padding:9px}.game-world{height:260px}.game-player{width:72px;left:28px;max-height:135px}.game-obstacle{width:28px;height:34px}.obstacle-two{height:45px}.arcade-top,.arcade-hud{font-size:6px}.game-controls{gap:9px}.game-control{min-width:54px;min-height:52px;padding:8px;font-size:8px}.jump-control{min-width:104px}.game-help{font-size:12px}}
+/* PLAYER ADVENTURE GAME */
+.game-box {
+  border: 3px solid #172b50;
+  background: #fffdf5;
+  padding: 18px;
+  box-shadow: 6px 6px 0 #c7c7b5;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Press Start 2P';
+  font-size: 9px;
+  margin-bottom: 15px;
+  color: #279b50;
+}
+
+.game-world {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  background: linear-gradient(#9bdcf4, #e6f8ff);
+  border: 2px solid #172b50;
+}
+
+.game-ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  background: repeating-linear-gradient(
+    90deg,
+    #45a64d 0 30px,
+    #368b40 30px 60px
+  );
+  border-top: 8px solid #78c85d;
+}
+
+#gamePlayer {
+  position: absolute;
+  width: 75px;
+  height: 100px;
+  object-fit: contain;
+  bottom: 42px;
+  left: 20px;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
+#gamePlayer.jumping {
+  animation: playerJump 0.55s ease-out;
+}
+
+@keyframes playerJump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-110px); }
+  100% { transform: translateY(0); }
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.game-controls button {
+  padding: 12px 20px;
+  border: 2px solid #172b50;
+  background: #ffc43d;
+  font-family: 'Press Start 2P';
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.game-controls button:active {
+  transform: translateY(3px);
+}
+
+.game-hint {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+@media (max-width: 680px) {
+  .game-world {
+    height: 240px;
+  }
+
+  #gamePlayer {
+    width: 60px;
+    height: 80px;
+  }
+
+  .game-controls button {
+    padding: 12px;
+    font-size: 8px;
+  }
+}
